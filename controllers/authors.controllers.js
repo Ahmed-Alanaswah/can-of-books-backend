@@ -6,6 +6,11 @@ let authersController = (req, res) => {
 	});
 };
 
+let autherscreateController = (req, res) => {
+	let data = req.body;
+	res.json(data);
+};
+
 let getAutherController = (req, res) => {
 	let autherId = req.query.id;
 	AuthorModel.findOne({ _id: autherId }).then((data) => {
@@ -16,4 +21,5 @@ let getAutherController = (req, res) => {
 module.exports = {
 	authersController,
 	getAutherController,
+	autherscreateController,
 };
