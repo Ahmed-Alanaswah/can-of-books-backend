@@ -28,8 +28,10 @@ app.get("/seed-data", (req, res) => {
 		messege: "Auther Objectncreated succefully",
 	});
 });
+
 app.get("/get-data", authersController);
 app.get("/get-author", getAutherController);
+
 app.listen(PORT, () => {
 	console.log(`Listening to port ${PORT}`);
 });
