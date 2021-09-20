@@ -8,7 +8,7 @@ const { bookSchema } = require("./Book.model");
 
 const autherSchema = new mongoose.Schema({
 	name: String,
-	books: [bookSchema],
+	books: Array,
 });
 
 const AuthorModel = mongoose.model("author", autherSchema);
@@ -17,17 +17,20 @@ let seedAuthor = () => {
 	let booksList = [
 		{
 			title: "mastery",
-			description: "lorem ipsum............",
+			description:
+				"It is a long established of n their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)",
 			status: "avialable",
 		},
 		{
 			title: "humans",
-			description: "lorem ipsum............",
+			description:
+				"It is a long established of n their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
 			status: "avilable",
 		},
 		{
 			title: "arts",
-			description: "lorem ipsum............",
+			description:
+				"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. Th sometimes by accident, sometimes on purpose (injected humour and the like).",
 			status: "available",
 		},
 	];
@@ -37,6 +40,7 @@ let seedAuthor = () => {
 		books: booksList,
 	});
 	newAuther.save();
+	console.log(newAuther);
 };
 
 module.exports = {
