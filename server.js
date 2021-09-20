@@ -21,7 +21,6 @@ mongoose.connect(`${MONGO_SERVER}/Bookstore`, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 });
-
 app.get("/seed-data", (req, res) => {
 	seedAuthor();
 
