@@ -22,13 +22,13 @@ mongoose.connect(`${MONGO_SERVER}/Bookstore`, {
 	useUnifiedTopology: true,
 });
 
-// app.get("/seed-data", (req, res) => {
-// 	seedAuthor();
+app.get("/seed-data", (req, res) => {
+	seedAuthor();
 
-// 	res.json({
-// 		messege: "Auther Objectncreated succefully",
-// 	});
-// });
+	res.json({
+		messege: "Auther Objectncreated succefully",
+	});
+});
 app.get("/get-data", authersController);
 app.get("/get-author", getAutherController);
 app.listen(PORT, () => {
