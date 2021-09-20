@@ -7,12 +7,12 @@ const mongoose = require("mongoose");
 //email
 
 const bookSchema = new mongoose.Schema({
-	tilte: String,
+	title: String,
 	description: String,
 	Status: String,
 });
 
-const booksModel = mongoose.model("book", bookSchema);
+const booksModel = mongoose.model("Books", bookSchema);
 
 // let seedBook = () => {
 // 	let newBook = new bookModel({
@@ -26,4 +26,4 @@ const booksModel = mongoose.model("book", bookSchema);
 // 	newBook.save();
 // };
 
-module.exports = { bookSchema };
+module.exports = { bookSchema, booksModel };

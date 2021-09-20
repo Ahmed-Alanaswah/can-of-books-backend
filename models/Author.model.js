@@ -7,8 +7,8 @@ const { bookSchema } = require("./Book.model");
 //email
 
 const autherSchema = new mongoose.Schema({
-	name: String,
-	books: Array,
+	author: String,
+	Books: bookSchema,
 });
 
 const AuthorModel = mongoose.model("author", autherSchema);

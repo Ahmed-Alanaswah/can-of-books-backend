@@ -15,6 +15,7 @@ const {
 	authersController,
 	getAutherController,
 	autherscreateController,
+	deleteBookController,
 } = require("./controllers/authors.controllers");
 // const seedBook = require("./models/Book.model");
 const { seedAuthor } = require("./models/Author.model");
@@ -42,7 +43,7 @@ app.post("/create-book", autherscreateController);
 
 app.get("/get-data", authersController);
 app.get("/get-author", getAutherController);
-
+app.delete("/delete-book/:id", deleteBookController);
 app.listen(PORT, () => {
 	console.log(`Listening to port ${PORT}`);
 });
