@@ -53,10 +53,28 @@ const deleteBookController = (req, res) => {
 	});
 };
 
+// update data
+
+const updateAuthorController = async (req, res) => {
+	let AuthorId = req.params.id;
+	let updatedData = req.body;
+	AuthorModel.findOne({ _id: AuthorId }).then((Author) => {
+		Author.author = updatedData.author;
+		Author.Books.title = updatedData.Books.title;
+		Author.Books.description = updatedData.Books.description;
+		Author.Books.status = updatedData.Books.status;
+
+		Author.save();
+	});
+	let updateAuthorList = await AuthorModel.find({});
+	res.status(200).send(updateAuthorList);
+};
+
 module.exports = {
 	authersController,
 	getAutherController,
 	autherscreateController,
 	deleteBookController,
 	getauthorsCotnroller,
+	updateAuthorController,
 };

@@ -17,6 +17,7 @@ const {
 	autherscreateController,
 	deleteBookController,
 	getauthorsCotnroller,
+	updateAuthorController,
 } = require("./controllers/authors.controllers");
 // const seedBook = require("./models/Book.model");
 const { seedAuthor } = require("./models/Author.model");
@@ -47,6 +48,7 @@ app.get("/", getauthorsCotnroller);
 
 app.post("/create-book", autherscreateController);
 app.delete("/delete-book/:id", deleteBookController);
+app.put("/update-book/:id", updateAuthorController);
 
 app.listen(PORT, () => {
 	console.log(`Listening to port ${PORT}`);
