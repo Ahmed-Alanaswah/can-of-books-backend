@@ -1,19 +1,19 @@
 "use strict";
 const { response } = require("express");
 const { AuthorModel } = require("../models/Author.model");
-const { booksModel } = require("../models/Book.model");
+// const { booksModel } = require("../models/Book.model");
 let authersController = (req, res) => {
 	AuthorModel.find().then((data) => {
 		res.json(data);
 	});
 };
 
-let getAutherController = (req, res) => {
-	let autherId = req.query.id;
-	AuthorModel.findOne({ _id: autherId }).then((data) => {
-		res.json(data);
-	});
-};
+// let getAutherController = (req, res) => {
+// 	let autherId = req.query.id;
+// 	AuthorModel.findOne({ _id: autherId }).then((data) => {
+// 		res.json(data);
+// 	});
+// };
 
 // get books
 
@@ -25,13 +25,15 @@ const getauthorsCotnroller = (req, res) => {
 
 // post method
 let autherscreateController = async (req, res) => {
-	let { author, Books } = req.body;
-	let newBook = booksModel(Books);
-	newBook.save();
+	let { author, title, description, email } = req.body;
+	// let newBook = booksModel(Books);
+	// newBook.save();
 
 	let newAuthor = AuthorModel({
 		author: author,
-		Books: newBook,
+		title: title,
+		description: description,
+		email: email,
 	});
 
 	newAuthor.save();
@@ -60,9 +62,9 @@ const updateAuthorController = async (req, res) => {
 	let updatedData = req.body;
 	AuthorModel.findOne({ _id: AuthorId }).then((Author) => {
 		Author.author = updatedData.author;
-		Author.Books.title = updatedData.Books.title;
-		Author.Books.description = updatedData.Books.description;
-		Author.Books.status = updatedData.Books.status;
+		Author.title = updatedData.title;
+		Author.description = updatedData.description;
+		Author.email = updatedData.email;
 
 		Author.save();
 	});
@@ -72,7 +74,7 @@ const updateAuthorController = async (req, res) => {
 
 module.exports = {
 	authersController,
-	getAutherController,
+	// getAutherController,
 	autherscreateController,
 	deleteBookController,
 	getauthorsCotnroller,
