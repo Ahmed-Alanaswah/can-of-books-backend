@@ -14,8 +14,17 @@ let getAutherController = (req, res) => {
 		res.json(data);
 	});
 };
+
+// get books
+
+const getauthorsCotnroller = (req, res) => {
+	AuthorModel.find({}).then((data) => {
+		res.status(200).json(data);
+	});
+};
+
 // post method
-let autherscreateController = (req, res) => {
+let autherscreateController = async (req, res) => {
 	let { author, Books } = req.body;
 	let newBook = booksModel(Books);
 	newBook.save();
@@ -26,18 +35,20 @@ let autherscreateController = (req, res) => {
 	});
 
 	newAuthor.save();
-	res.json(newAuthor);
+	let authorsList = await AuthorModel.find({});
+	res.status(201).json(authorsList);
 };
 
 // handle deleting
 const deleteBookController = (req, res) => {
 	let id = req.params.id;
 
-	AuthorModel.findByIdAndDelete(id, (err, data) => {
+	AuthorModel.findByIdAndDelete(id, async (err, data) => {
 		if (err) {
 			res.status(500).send("an error occured");
 		} else {
-			AuthorModel.find({}).then((authors) => res.json(authors));
+			let authorList = await AuthorModel.find({});
+			res.json(authorList);
 		}
 	});
 };
@@ -47,4 +58,5 @@ module.exports = {
 	getAutherController,
 	autherscreateController,
 	deleteBookController,
+	getauthorsCotnroller,
 };
