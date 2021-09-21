@@ -42,7 +42,7 @@ db.once("open", function () {
 });
 
 app.get("/get-data", authersController);
-app.get("/get-author", getAutherController);
+// app.get("/get-author", getAutherController);
 
 app.get("/", getauthorsCotnroller);
 

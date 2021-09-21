@@ -8,15 +8,19 @@ const { bookSchema } = require("./Book.model");
 
 const autherSchema = new mongoose.Schema({
 	author: String,
-	Books: bookSchema,
+	title: String,
+	description: String,
+	email: String,
 });
 
 const AuthorModel = mongoose.model("author", autherSchema);
 
 let seedAuthor = () => {
 	let newAuther = new AuthorModel({
-		name: "Robert greence",
-		books: booksList,
+		author: "Robert greence",
+		title: "action",
+		description: "hello world this is my job",
+		email: "available",
 	});
 	newAuther.save();
 	console.log(newAuther);
